@@ -312,8 +312,8 @@ def show_table(df):
         return
     disp = df[DISPLAY_COLS].sort_values("Score", ascending=False).reset_index(drop=True)
     styled = disp.style\
-        .applymap(colour_bucket, subset=["Bucket"])\
-        .applymap(colour_pct,    subset=["2D %","3D %","5D %"])\
+        .map(colour_bucket, subset=["Bucket"])\
+        .map(colour_pct,    subset=["2D %","3D %","5D %"])\
         .format({"RSI":"{:.1f}","Vol×":"{:.2f}x","Close ₹":"₹{:.2f}",
                  "2D %":lambda v: f"+{v:.2f}%" if v and v>0 else (f"{v:.2f}%" if v else "—"),
                  "3D %":lambda v: f"+{v:.2f}%" if v and v>0 else (f"{v:.2f}%" if v else "—"),
